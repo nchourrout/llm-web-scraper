@@ -20,7 +20,7 @@ export OPENAI_API_KEY=your-api-key
 
 ## Usage
 
-1. Edit the zod schema and url field in `src/llm-extract.ts`
+1. Edit the Zod schema, prompt and url field in `src/llm-extract.ts`
 2. Run the script
 ``` bash
 npx ts-node src/llm-extract.ts
@@ -55,3 +55,7 @@ Output:
   ]
 }
 ```
+
+## Blog Post
+
+Find out more details on this [blog post](https://medium.com/@nchourrout/cut-api-costs-puppeteer-for-screenshots-pdf-generation-and-llm-scraping-ecbb5415e7e7).
