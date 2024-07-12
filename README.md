@@ -20,7 +20,7 @@ export OPENAI_API_KEY=your-api-key
 
 ## Usage
 
-1. Edit the Zod schema, prompt and url field in `src/llm-extract.ts`
+1. Edit the Zod schema and url field in `src/llm-extract.ts`
 2. Run the script
 ``` bash
 npx ts-node src/llm-extract.ts

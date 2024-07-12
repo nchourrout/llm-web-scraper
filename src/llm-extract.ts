@@ -2,6 +2,7 @@ import { PuppeteerWebBaseLoader } from "@langchain/community/document_loaders/we
 import { ChatOpenAI } from "@langchain/openai";
 import { z } from "zod";
 import TurndownService from 'turndown';
+import { zodToJsonSchema } from 'zod-to-json-schema';
 
 const turndownService = new TurndownService();
 
@@ -11,6 +12,8 @@ const contentSchema = z.object({
   description: z.string().describe("A brief description of the content"),
   keywords: z.array(z.string()).describe("A list of keywords related to the content"),
 });
+
+const jsonSchema = zodToJsonSchema(contentSchema, "Content");
 
 // Initialize the OpenAI model
 const model = new ChatOpenAI({
@@ -25,9 +28,7 @@ async function extractStructuredData(markdownText: string) {
   const prompt = `
     Extract the following information from the Markdown text:
 
-    - Title: The main title of the content.
-    - Description: A brief summary of the content.
-    - Keywords: A list of keywords that represent the main topics of the content.
+     ${JSON.stringify(jsonSchema, null, 2)}
 
     Markdown Text:
     ${markdownText}
